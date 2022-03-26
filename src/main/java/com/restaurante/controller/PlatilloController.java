@@ -32,8 +32,8 @@ public class PlatilloController {
     @GetMapping("/platillo/nuevo")
     public String nuevoPlatillo(Platillo platillo, Model model) {
 
-        var platillo = platilloService.getPlatillos(true); // en ArticuloController es var _categorias_
-        model.addAttribute("platillo", platillo);
+        var platillosDB = platilloService.getPlatillos(true); // en ArticuloController es var _categorias_
+        model.addAttribute("platillosDB", platillosDB);
 
         return "/platillo/modifica";
     }

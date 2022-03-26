@@ -18,7 +18,7 @@ public class MeseroController {
     @GetMapping("/mesero/listado")
     public String page(Model model) {
 
-        var meserosDB = meseroService.getMeseros();
+        var meserosDB = meseroService.getMeseros(false);
         model.addAttribute("meserosDB", meserosDB);
 
         return "/mesero/listado";

@@ -1,7 +1,7 @@
 package com.restaurante.controller;
 
-import com.tienda.domain.Mesa;
-import com.tienda.service.MesaService;
+import com.restaurante.domain.Mesa;
+import com.restaurante.service.MesaService;
 //import com.tienda.service.CategoriaService; en mesa
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -28,7 +28,8 @@ public class MesaController {
     @GetMapping("/mesa/nuevo")
     public String nuevoMesa(Mesa mesa, Model model) {
 
-        var mesas = categoriaService.getCategorias(true);  //.getMesas
+        //var mesas = categoriaService.getCategorias(true);  //.getMesas
+        var mesas = mesaService.getMesas(true);  // escrito para remover error
         model.addAttribute("mesas", mesas);
 
         return "/mesa/modifica";
