@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3c.org/199/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Error</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        .contenido {
+        text-align: center;
+        border-radius: 20px;
+        top:50%;
+        left:50%;
+        margin-left: -250px;
+        margin-top: -75px;
+        width: 500px;
+        height: 150px;
+        position: fixed;
+        overflow: auto;
+        }
+
+    </head>
+    <body>
+        <div class="contenido">
+            <h2>[[#{e.403.titulo}]] </h2>
+            <p>[[#{e.403.texto}]]</p>
+            <a th:ref="@{/}">[[#{action.regresar}]]</a>

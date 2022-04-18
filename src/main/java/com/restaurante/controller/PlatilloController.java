@@ -1,8 +1,5 @@
 package com.restaurante.controller;
 
-/*
-      BASADO EN ARTICULO_CONTROLLER
- */
 import com.restaurante.domain.Platillo;
 import com.restaurante.service.PlatilloService;
 import lombok.extern.slf4j.Slf4j;
@@ -19,8 +16,6 @@ public class PlatilloController {
     @Autowired
     private PlatilloService platilloService;
 
-    /*@Autowired
-    private CategoriaService categoriaService;*/
     @RequestMapping("/platillo/listado")
     public String inicio(Model model) {
         var platillosDB = platilloService.getPlatillos(false);

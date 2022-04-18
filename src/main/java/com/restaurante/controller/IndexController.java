@@ -19,8 +19,8 @@ public class IndexController {
     public String page(Model model) {
         log.info("Utilizando la Arquitectura Modelo Vista Controlador (MVC)");
 
-        var mesasDB = mesaService.getMesas(true);
-        model.addAttribute("mesasDB", mesasDB);
+        /*var mesasDB = mesaService.getMesas(true);
+        model.addAttribute("mesasDB", mesasDB);*/
 
         return "index";
     }

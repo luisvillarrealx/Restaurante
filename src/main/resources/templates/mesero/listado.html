@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head th:replace="layout/plantilla :: head">
+        <title>Listado</title>
+    </head>
+    <body>
+        <header th:replace="layout/plantilla :: header"></header>
+
+        <section th:replace="mesero/fragmentosMesero :: botonesAgregar"/>
+        <section th:replace="mesero/fragmentosMesero :: agregarMesero"/>
+        <section th:replace="mesero/fragmentosMesero :: listadoMeseros"/>
+
+        <footer th:replace="layout/plantilla :: footer"></footer> 
+    </body>
+</html>
