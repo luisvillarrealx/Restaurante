@@ -1,5 +1,8 @@
 package com.restaurante.dao;
 
-public interface MesaDao{
+import com.restaurante.domain.Mesa;
+import org.springframework.data.repository.CrudRepository;
+
+public interface MesaDao extends CrudRepository<Mesa, Long>{
     
 }

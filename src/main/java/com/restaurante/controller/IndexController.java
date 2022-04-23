@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Slf4j
 public class IndexController {
 
-    @Autowired
-    private MesaService mesaService;
+    /*@Autowired
+    private MesaService mesaService;*/
 
     @GetMapping("/")
 

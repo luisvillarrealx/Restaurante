@@ -20,14 +20,14 @@ public class Mesero implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_mesero")
 
-    private String id_mesero;
+    private Long id_mesero;
     private String nombre;
     private String estado;
 
     public Mesero() {
     }
 
-    public Mesero(String id_mesero, String nombre, String estado) {
+    public Mesero(Long id_mesero, String nombre, String estado) {
         this.id_mesero = id_mesero;
         this.nombre = nombre;
         this.estado = estado;

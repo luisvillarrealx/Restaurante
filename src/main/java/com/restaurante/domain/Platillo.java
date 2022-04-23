@@ -19,7 +19,7 @@ public class Platillo implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_platillo")
-    private String id_platillo;
+    private Long id_platillo;
     private String categoria;
     private String descripcion;
     private String precio;
@@ -27,7 +27,7 @@ public class Platillo implements Serializable {
     public Platillo() {
     }
 
-    public Platillo(String id_platillo, String categoria, String descripcion, String precio) {
+    public Platillo(Long id_platillo, String categoria, String descripcion, String precio) {
         this.id_platillo = id_platillo;
         this.categoria = categoria;
         this.descripcion = descripcion;

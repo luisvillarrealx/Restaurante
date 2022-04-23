@@ -7,26 +7,36 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-public class PlatilloServiceImpl implements PlatilloService{
+@Service
+public class PlatilloServiceImpl implements PlatilloService {
+
+    @Autowired
+    private PlatilloDao platilloDao;
 
     @Override
+    @Transactional(readOnly = true)
     public List<Platillo> getPlatillos(boolean activos) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        var lista = (List<Platillo>) platilloDao.findAll();
+
+        return lista;
     }
 
     @Override
+    @Transactional
     public void save(Platillo platillo) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        platilloDao.save(platillo);
     }
 
     @Override
+    @Transactional
     public void delete(Platillo platillo) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        platilloDao.delete(platillo);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Platillo getPlatillo(Platillo platillo) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return platilloDao.findById(platillo.getId_platillo()).orElse(null);
     }
-    
+
 }

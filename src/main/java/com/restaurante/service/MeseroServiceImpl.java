@@ -7,26 +7,34 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-public class MeseroServiceImpl implements MeseroService{
+@Service
+public class MeseroServiceImpl implements MeseroService {
+
+    @Autowired
+    private MeseroDao meseroDao;
 
     @Override
+    @Transactional(readOnly = true)
     public List<Mesero> getMeseros(boolean activos) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        var lista = (List<Mesero>) meseroDao.findAll();
+
+        return lista;
     }
 
     @Override
+    @Transactional
     public void save(Mesero mesero) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        meseroDao.save(mesero);
     }
 
     @Override
     public void delete(Mesero mesero) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        meseroDao.delete(mesero);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Mesero getMesero(Mesero mesero) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return meseroDao.findById(mesero.getId_mesero()).orElse(null);
     }
-    
 }

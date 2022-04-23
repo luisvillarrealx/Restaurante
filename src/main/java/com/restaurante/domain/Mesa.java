@@ -1,13 +1,8 @@
 package com.restaurante.domain;
 
 import java.io.Serializable;
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import lombok.Data;
-import javax.persistence.Table;
-import javax.persistence.Entity;
 
 @Data
 @Entity
@@ -19,17 +14,18 @@ public class Mesa implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "mesa")
-    private String id_mesa;
+    private Long id_mesa;
     private String cant_personas;
-    private String estado;  // boolean ocupada
+    private boolean ocupada;
     private String factura;
 
     public Mesa() {
     }
 
-    public Mesa(String id_mesa, String cant_personas, String factura) {
+    public Mesa(Long id_mesa, String cant_personas, String factura, boolean ocupada) {
         this.id_mesa = id_mesa;
         this.cant_personas = cant_personas;
         this.factura = factura;
+        this.ocupada = ocupada;
     }
 }

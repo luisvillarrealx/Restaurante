@@ -1,13 +1,8 @@
 package com.restaurante.domain;
 
 import java.io.Serializable;
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import lombok.Data;
-import javax.persistence.Table;
-import javax.persistence.Entity;
 
 @Data
 @Entity
@@ -19,15 +14,16 @@ public class Categoria implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_categoria")
-    private String id_categoria;
+    private Long id_categoria;
     private String categoria;
+    private boolean activo;
 
     public Categoria() {
     }
 
-    public Categoria(String id_categoria, String categoria) {
-        this.id_categoria = id_categoria;
+    public Categoria(String categoria, boolean activo) {
         this.categoria = categoria;
+        this.activo = activo;
     }
     
     

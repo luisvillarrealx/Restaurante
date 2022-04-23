@@ -7,41 +7,38 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-public class CategoriaServiceImpl implements CategoriaService{
-    
-        @Autowired
+@Service
+public class CategoriaServiceImpl implements CategoriaService {
+
+    @Autowired
     private CategoriaDao categoriaDao;
-        
-     /*      @Override
+
+    @Override
     @Transactional(readOnly = true)
     public List<Categoria> getCategorias(boolean activos) {
         var lista = (List<Categoria>) categoriaDao.findAll();
         
-        /*if(activos) { lista.removeIf( e -> !e.isActivo()); }
+        if(activos) { lista.removeIf( e -> !e.isActivo()); }
         
-        return lista;*/
-
-    @Override
-    public List<Categoria> getCategorias(boolean activos) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return lista;
     }
+    
 
     @Override
+    @Transactional
     public void save(Categoria categoria) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        categoriaDao.save(categoria);
     }
 
     @Override
+    @Transactional
     public void delete(Categoria categoria) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        categoriaDao.delete(categoria);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Categoria getCategoria(Categoria categoria) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return categoriaDao.findById(categoria.getId_categoria()).orElse(null);
     }
-    }
-
-
-
-
+}
