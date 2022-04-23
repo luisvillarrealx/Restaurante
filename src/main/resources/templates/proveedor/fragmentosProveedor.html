@@ -6,8 +6,8 @@
         <title>Inicio</title>
     </head>
     <body>
-        
-        
+
+
         <section th:fragment="botonesAgregar" class="py-4 mb-4 bg-light">
             <div class="container">
                 <div class="row">
@@ -23,9 +23,116 @@
                 </div>
             </div>
         </section>
-        
-        
-        
-        
+
+        <section th:fragment="listadoProveedores" id="proveedores">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>[[#{proveedor.titulo}]]</h4>
+                            </div>
+                            <div th:if="${proveedoresDB != null and !proveedoresDB.empty}">
+                                <table class="table table-stryped" style="margin-bottom: 90px;">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th>#</th>
+                                            <th th:text="#{proveedor.nombre}">Nombre</th>
+                                            <th th:text="#{proveedor.suministro}">Suministro</th>
+                                            <th th:text="#{proveedor.direccion}">Dirección</th>
+                                            <th th:text="#{proveedor.telefono}">Teléfono</th>
+                                            <th th:text="#{proveedor.correo}">Correo</th>
+                                            <th></th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="proveedor, contador : ${proveedoresDB}">
+                                            <td>[[${contador.count}]]</td>
+                                            <td>[[${proveedor.nombre}]]</td>
+                                            <td>[[${proveedor.suministro}]]</td>
+                                            <td>[[${proveedor.direccion}]]</td>
+                                            <td>[[${proveedor.telefono}]]</td>
+                                            <td>[[${proveedor.correo}]]</td>
+                                            <td>
+                                                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/proveedor/eliminar/}+${proveedor.id_proveedor}"
+                                                   class="btn btn-danger">
+                                                    <i class="fas fa-angle-double-right"></i> [[#{accion.eliminar}]]
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/proveedor/modificar/}+${proveedor.id_proveedor}"
+                                                   class="btn btn-success">
+                                                    <i class="fas fa-angle-double-right"></i> [[#{accion.actualizar}]]
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="text-center p-2" th:if="${proveedoresDB == null or proveedoresDB.empty}">
+                                <span th:text="#{proveedor.no_mostrar}">Lista vacía</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card text-center bg-success text-white mb-3">
+                            <div class="card-body">
+                                <h3 th:text="#{proveedor.proveedoresTotal}">Total proveedores</h3>
+                                <h4 class="display-4">
+                                    <i class="fa-solid fa-colon-sign"></i> [[${totalProveedores}]]
+                                </h4>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            </div>
+        </section>
+
+        <section th:fragment="agregarProveedor">
+            <div id="agregarProveedor" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header bg-info text-white">
+                            <h5 class="modal-title" th:text="#{accion.agregar}">Agregar proveedor</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div> 
+                        <form th:action="@{/proveedor/guardar}" th:object="${proveedor}"
+                              method="POST" class="was-validated">
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="nombre" th:text="#{proveedor.nombre}">Nombre</label>
+                                    <input type="text" class="form-control" name="nombre" required="true">
+                                </div>
+                                <div class="form-group">
+                                    <label for="suministro" th:text="#{proveedor.suministro}">Suministro</label>
+                                    <input type="text" class="form-control" name="suministro" required="true">
+                                </div>
+                                <div class="form-group">
+                                    <label for="direccion" th:text="#{proveedor.direccion}">Dirección</label>
+                                    <input type="text" class="form-control" name="direccion" required="true">
+                                </div>
+                                <div class="form-group">
+                                    <label for="tel" th:text="#{proveedor.telefono}">Teléfono</label>
+                                    <input type="tel" class="form-control" name="telefono" required="true">
+                                </div>
+                                <div class="form-group">
+                                    <label for="correo" th:text="#{proveedor.correo}">Correo</label>
+                                    <input type="email" class="form-control" name="correo" required="true">
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-primary" type="submit" th:text="#{accion.guardar}">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </body>
 </html>
