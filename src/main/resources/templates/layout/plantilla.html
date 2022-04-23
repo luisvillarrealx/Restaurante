@@ -56,7 +56,22 @@
     </style>
     <body>
         <header th:fragment="header" class="header">
-            <!-- <nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
+            <div class="menu">
+                <nav>
+                    <ul>
+                        <li><a th:href="@{/}">Inicio</a></li>
+                        <li><a th:href="@{/mesero/listado}">Meseros</a></li>
+                        <li><a th:href="@{/proveedor/listado}">Proveedores</a></li>
+                        <li><a th:href="@{/platillo/listado}">Platillos</a></li>
+                        <li><a th:href="@{/contacto/contacto}">Contacto</a></li>
+
+                    </ul>
+                </nav>
+            </div>
+            
+            
+            
+            <!--<nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
                  <div class="container">
                      <a th:href="@{/}" class="navbar-brand">Restaurante Delitzo</a>
                      <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -109,18 +124,7 @@
              </section>-->
 
 
-            <div class="menu">
-                <nav>
-                    <ul>
-                        <li><a href="#">Inicio</a></li>
-                        <li><a th:href="@{/mesero/listado}">Meseros</a></li>
-                        <li><a th:href="@{/proveedor/listado}">Proveedores</a></li>
-                        <li><a th:href="@{/platillo/listado}">Platillos</a></li>
-                        <li><a href="../contacto/contacto.html">Contacto</a></li>
 
-                    </ul>
-                </nav>
-            </div>
         </header>
 
         <footer th:fragment="footer" class="position-fixed bottom-0 start-0 end-0 bg-info text-white mt-5 p-2">

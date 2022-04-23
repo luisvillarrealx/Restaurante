@@ -22,16 +22,24 @@ public class Mesero implements Serializable {
 
     private Long id_mesero;
     private String nombre;
-    private String estado;
+    private String apellido;
+    private String cedula;
+    private String telefono;
+    private String correo;
+
 
     public Mesero() {
     }
 
-    public Mesero(Long id_mesero, String nombre, String estado) {
-        this.id_mesero = id_mesero;
+    public Mesero(String nombre, String apellido, String cedula, String telefono, String correo) {
         this.nombre = nombre;
-        this.estado = estado;
+        this.apellido = apellido;
+        this.cedula = cedula;
+        this.telefono = telefono;
+        this.correo = correo;
     }
+
+
 
     
     

@@ -16,9 +16,9 @@ public class MeseroServiceImpl implements MeseroService {
     @Override
     @Transactional(readOnly = true)
     public List<Mesero> getMeseros(boolean activos) {
-        var lista = (List<Mesero>) meseroDao.findAll();
+        var meserosDB = (List<Mesero>) meseroDao.findAll();
 
-        return lista;
+        return meserosDB;
     }
 
     @Override

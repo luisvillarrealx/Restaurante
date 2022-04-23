@@ -18,8 +18,8 @@ public class ProveedorController {
 
     @RequestMapping("/proveedor/listado")
     public String inicio(Model model) {
-        var proveedorsDB = proveedorService.getProveedores();
-        model.addAttribute("proveedorsDB", proveedorsDB);
+        var proveedoresDB = proveedorService.getProveedores();
+        model.addAttribute("proveedoresDB", proveedoresDB);
 
         return "/proveedor/listado";
     }
@@ -27,8 +27,8 @@ public class ProveedorController {
     @GetMapping("/proveedor/nuevo")
     public String nuevoProveedor(Proveedor proveedor, Model model) {
 
-        var proveedorsDB = proveedorService.getProveedores(); // en ArticuloController es var _categorias_
-        model.addAttribute("proveedorsDB", proveedorsDB);
+        var proveedoresDB = proveedorService.getProveedores();
+        model.addAttribute("proveedoresDB", proveedoresDB);
 
         return "/proveedor/modifica";
     }

@@ -21,16 +21,22 @@ public class Proveedor implements Serializable {
     @Column(name = "id_proveedor")
 
     private Long id_proveedor;
-    //private String nombre;
-    //private String estado;
+    private String nombre;
+    private String suministro;
+    private String direccion;
+    private String telefono;
+    private String correo;
 
+  
     public Proveedor() {
     }
 
-    public Proveedor(Long id_proveedor) {
-        this.id_proveedor = id_proveedor;
-        //this.nombre = nombre;
-        //this.estado = estado;
+    public Proveedor(String nombre, String suministro, String direccion, String telefono, String correo) {
+        this.nombre = nombre;
+        this.suministro = suministro;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.correo = correo;
     }
 
 }

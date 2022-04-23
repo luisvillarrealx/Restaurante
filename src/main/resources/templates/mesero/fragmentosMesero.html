@@ -21,13 +21,117 @@
                 </div>
             </div>
         </section>
-        
-        
-        <section th:fragment="header" class="header">
 
+        <section th:fragment="listadoMeseros" id="meseros">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>[[#{mesero.titulo}]]</h4>
+                            </div>
+                            <div th:if="${meserosDB != null and !meserosDB.empty}">
+                                <table class="table table-stryped" style="margin-bottom: 90px;">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th>#</th>
+                                            <th th:text="#{mesero.nombre}">Nombre</th>
+                                            <th th:text="#{mesero.apellido}">Apellido</th>
+                                            <th th:text="#{mesero.cedula}">Cédula</th>
+                                            <th th:text="#{mesero.telefono}">Teléfono</th>
+                                            <th th:text="#{mesero.correo}">Correo</th>
+                                            <th></th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="mesero, contador : ${meserosDB}">
+                                            <td>[[${contador.count}]]</td>
+                                            <td>[[${mesero.nombre}]]</td>
+                                            <td>[[${mesero.apellido}]]</td>
+                                            <td>[[${mesero.cedula}]]</td>
+                                            <td>[[${mesero.telefono}]]</td>
+                                            <td>[[${mesero.correo}]]</td>
+                                            <td>
+                                                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/mesero/eliminar/}+${mesero.id_mesero}"
+                                                   class="btn btn-danger">
+                                                    <i class="fas fa-angle-double-right"></i> [[#{accion.eliminar}]]
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/mesero/modificar/}+${mesero.id_mesero}"
+                                                   class="btn btn-success">
+                                                    <i class="fas fa-angle-double-right"></i> [[#{accion.actualizar}]]
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="text-center p-2" th:if="${meserosDB == null or meserosDB.empty}">
+                                <span th:text="#{mesero.no_mostrar}">Lista vacía</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card text-center bg-success text-white mb-3">
+                            <div class="card-body">
+                                <h3 th:text="#{mesero.meserosTotal}">Total meseros</h3>
+                                <h4 class="display-4">
+                                    <i class="fa-solid fa-colon-sign"></i> [[${totalMeseros}]]
+                                </h4>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            </div>
         </section>
-        
-        
-        
+
+        <section th:fragment="agregarMesero">
+            <div id="agregarMesero" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header bg-info text-white">
+                            <h5 class="modal-title" th:text="#{accion.agregar}">Agregar Mesero</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div> 
+                        <form th:action="@{/mesero/guardar}" th:object="${mesero}"
+                              method="POST" class="was-validated">
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="nombre" th:text="#{mesero.nombre}">Nombre</label>
+                                    <input type="text" class="form-control" name="nombre" required="true">
+                                </div>
+                                <div class="form-group">
+                                    <label for="apellido" th:text="#{mesero.apellido}">Apellido</label>
+                                    <input type="text" class="form-control" name="apellido" required="true">
+                                </div>
+                                <div class="form-group">
+                                    <label for="cedula" th:text="#{mesero.cedula}">Cédula</label>
+                                    <input type="text" class="form-control" name="cedula" required="true">
+                                </div>
+                                <div class="form-group">
+                                    <label for="tel" th:text="#{mesero.telefono}">Teléfono</label>
+                                    <input type="tel" class="form-control" name="telefono" required="true">
+                                </div>
+                                <div class="form-group">
+                                    <label for="correo" th:text="#{mesero.correo}">Correo</label>
+                                    <input type="email" class="form-control" name="correo" required="true">
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-primary" type="submit" th:text="#{accion.guardar}">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
     </body>
 </html>
