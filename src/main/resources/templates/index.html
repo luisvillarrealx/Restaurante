@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns="http://www.w3.org/1999/xhtml">
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <head>
-        <title>Delitzo</title>
+        <title> Restaurante Delitzo</title>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link href="/images/logo.png" rel="shortcut icon" type="image/x-icon"/>
@@ -203,14 +204,14 @@
         </section>-->
         <div class="menu">
             <nav>
-                <ul>
-                    <li><a href="#">Inicio</a></li>
-                    <li><a href="#">Meseros</a></li>
-                    <li><a href="#">Proveedores</a></li>
-                    <li><a href="#">Platillos</a></li>
-                    <li><a href="../contacto/contacto.html">Contacto</a></li>
+                    <ul>
+                        <li><a th:href="@{/}">Inicio</a></li>
+                        <li><a th:href="@{/mesero/listado}">Meseros</a></li>
+                        <li><a th:href="@{/proveedor/listado}">Proveedores</a></li>
+                        <li><a th:href="@{/platillo/listado}">Platillos</a></li>
+                        <li><a th:href="@{/contacto/contacto}">Contacto</a></li>
 
-                </ul>
+                    </ul>
             </nav>
         </div>
         <figure>
