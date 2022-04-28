@@ -1,4 +1,4 @@
-package com.restaurante.controller;
+/*package com.restaurante.controller;
 
 import com.restaurante.service.MesaService;
 import lombok.extern.slf4j.Slf4j;
@@ -11,17 +11,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Slf4j
 public class IndexController {
 
-    /*@Autowired
-    private MesaService mesaService;*/
-
     @GetMapping("/")
 
     public String page(Model model) {
         log.info("Utilizando la Arquitectura Modelo Vista Controlador (MVC)");
 
-        /*var mesasDB = mesaService.getMesas(true);
-        model.addAttribute("mesasDB", mesasDB);*/
-
         return "index";
     }
-}
+}*/
+
+const express = require('express');
+const router = express.Router();
+
+module.exports = function() {
+    router.get('/', (res) => {
+        res.send('index1');
+    });
+    return router;
+};

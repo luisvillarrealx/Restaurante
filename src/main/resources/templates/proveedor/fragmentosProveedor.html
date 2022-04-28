@@ -23,7 +23,6 @@
                 </div>
             </div>
         </section>
-
         <section th:fragment="listadoProveedores" id="proveedores">
             <div class="container">
                 <div class="row">
@@ -57,7 +56,7 @@
                                             <td>
                                                 <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/proveedor/eliminar/}+${proveedor.id_proveedor}"
                                                    class="btn btn-danger">
-                                                    <i class="fas fa-angle-double-right"></i> [[#{accion.eliminar}]]
+                                                    <i class="fas fa-trash"></i> [[#{accion.eliminar}]]
                                                 </a>
                                             </td>
                                             <td>
@@ -75,23 +74,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3">
-                        <div class="card text-center bg-success text-white mb-3">
-                            <div class="card-body">
-                                <h3 th:text="#{proveedor.proveedoresTotal}">Total proveedores</h3>
-                                <h4 class="display-4">
-                                    <i class="fa-solid fa-colon-sign"></i> [[${totalProveedores}]]
-                                </h4>
-                            </div>
-                        </div>
-
-
-                    </div>
+                    
                 </div>
             </div>
             </div>
         </section>
-
         <section th:fragment="agregarProveedor">
             <div id="agregarProveedor" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
@@ -123,7 +110,6 @@
                                     <label for="correo" th:text="#{proveedor.correo}">Correo</label>
                                     <input type="email" class="form-control" name="correo" required="true">
                                 </div>
-
                             </div>
                             <div class="modal-footer">
                                 <button class="btn btn-primary" type="submit" th:text="#{accion.guardar}">Guardar</button>
@@ -133,6 +119,73 @@
                 </div>
             </div>
         </section>
-
+        <section th:fragment="editarProveedor">            
+            <form method="POST"
+                  th:action="@{/proveedor/guardar}"
+                  th:object="${proveedor}"
+                  class="was-validated">
+                <input type="hidden" name="id_proveedor" th:field="*{id_proveedor}"/>
+                <section th:replace="proveedor/fragmentosProveedor :: botonesEditar"/> 
+                <div id="details">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4>[[#{accion.actualizar}]]</h4>
+                                    </div>
+                                    <div class="card-body">              
+                                        <div class="form-group">
+                                            <label for="nombre" th:text="#{proveedor.nombre}">Nombre: </label>
+                                            <input type="text" class="form-control" name="nombre" th:field="*{nombre}"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="suministro" th:text="#{proveedor.suministro}">Suministro: </label>
+                                            <input type="text"  class="form-control" name="suministro" th:field="*{suministro}"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="direccion" th:text="#{proveedor.direccion}">Dirección: </label>
+                                            <input type="text"  class="form-control" name="direccion" th:field="*{direccion}"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="tel" th:text="#{proveedor.telefono}">Teléfono: </label>
+                                            <input type="text"  class="form-control" name="telefono" th:field="*{telefono}"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="correo" th:text="#{proveedor.correo}">Correo: </label>
+                                            <input type="text"  class="form-control" name="correo" th:field="*{correo}"/>
+                                        </div>               
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </section>
+        <section th:fragment="botonesEditar">
+            <div id="actions" class="py-4 mb-4 bg-light">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <a th:href="@{/proveedor/listado}" class="btn btn-ligth btn-block">
+                                <i class="fas fa-arrow-left"></i> [[#{accion.regresar}]]
+                            </a>
+                        </div>
+                        <div class="col-md-3">
+                            <button type="submit" class="btn btn-success btn-block">
+                                <i class="fas fa-check"></i> [[#{accion.guardar}]]
+                            </button>
+                        </div>
+                        <div class="col-md-3">
+                            <a th:href="@{/proveedor/eliminar/}+${proveedor.id_proveedor}"
+                               class="btn btn-danger btn-block">
+                                <i class="fas fa-trash"></i> [[#{accion.eliminar}]]
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </body>
 </html>

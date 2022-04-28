@@ -21,7 +21,6 @@
                 </div>
             </div>
         </section>
-
         <section th:fragment="listadoMeseros" id="meseros">
             <div class="container">
                 <div class="row">
@@ -55,7 +54,7 @@
                                             <td>
                                                 <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/mesero/eliminar/}+${mesero.id_mesero}"
                                                    class="btn btn-danger">
-                                                    <i class="fas fa-angle-double-right"></i> [[#{accion.eliminar}]]
+                                                    <i class="fas fa-trash"></i> [[#{accion.eliminar}]]
                                                 </a>
                                             </td>
                                             <td>
@@ -73,23 +72,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3">
-                        <div class="card text-center bg-success text-white mb-3">
-                            <div class="card-body">
-                                <h3 th:text="#{mesero.meserosTotal}">Total meseros</h3>
-                                <h4 class="display-4">
-                                    <i class="fa-solid fa-colon-sign"></i> [[${totalMeseros}]]
-                                </h4>
-                            </div>
-                        </div>
 
-
-                    </div>
                 </div>
             </div>
             </div>
         </section>
-
         <section th:fragment="agregarMesero">
             <div id="agregarMesero" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
@@ -131,7 +118,73 @@
                 </div>
             </div>
         </section>
-
-
+        <section th:fragment="editarMesero">            
+            <form method="POST"
+                  th:action="@{/mesero/guardar}"
+                  th:object="${mesero}"
+                  class="was-validated">
+                <input type="hidden" name="id_mesero" th:field="*{id_mesero}"/>
+                <section th:replace="mesero/fragmentosMesero :: botonesEditar"/> 
+                <div id="details">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4>[[#{accion.actualizar}]]</h4>
+                                    </div>
+                                    <div class="card-body">              
+                                        <div class="form-group">
+                                            <label for="nombre" th:text="#{mesero.nombre}">Nombre: </label>
+                                            <input type="text" class="form-control" name="nombre" th:field="*{nombre}"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="apellido" th:text="#{mesero.apellido}">Apellido: </label>
+                                            <input type="text"  class="form-control" name="apellido" th:field="*{apellido}"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="cedula" th:text="#{mesero.cedula}">Cédula: </label>
+                                            <input type="text"  class="form-control" name="cedula" th:field="*{cedula}"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="tel" th:text="#{mesero.telefono}">Teléfono: </label>
+                                            <input type="text"  class="form-control" name="telefono" th:field="*{telefono}"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="correo" th:text="#{mesero.correo}">Correo: </label>
+                                            <input type="text"  class="form-control" name="correo" th:field="*{correo}"/>
+                                        </div>               
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </section>
+        <section th:fragment="botonesEditar">
+            <div id="actions" class="py-4 mb-4 bg-light">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <a th:href="@{/mesero/listado}" class="btn btn-ligth btn-block">
+                                <i class="fas fa-arrow-left"></i> [[#{accion.regresar}]]
+                            </a>
+                        </div>
+                        <div class="col-md-3">
+                            <button type="submit" class="btn btn-success btn-block">
+                                <i class="fas fa-check"></i> [[#{accion.guardar}]]
+                            </button>
+                        </div>
+                        <div class="col-md-3">
+                            <a th:href="@{/mesero/eliminar/}+${mesero.id_mesero}"
+                               class="btn btn-danger btn-block">
+                                <i class="fas fa-trash"></i> [[#{accion.eliminar}]]
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </body>
 </html>

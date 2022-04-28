@@ -7,7 +7,8 @@
     </head>
     <body>
         <header th:replace="layout/plantilla :: header" />
-        <section th:replace="articulo/fragmentosMesero:: editarMesero"/>
+        <nav th:replace="layout/plantilla :: navbar"></nav>
+        <section th:replace="mesero/fragmentosMesero:: editarMesero"/>
         <footer th:replace="layout/plantilla :: footer" />
     </body>
 </html>

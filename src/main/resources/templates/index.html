@@ -16,24 +16,6 @@
             padding: 0;
         }
 
-        #mesa{
-            border: 1px solid lightgray;
-            background-color: #AFB803;
-            color: white;
-            border-radius: 15px;
-            padding: 20px;
-            margin: 50px;
-            height: 300px;
-            width: 300px;
-
-        }
-
-        section div{
-            font-size: 40px;
-            text-align: center;
-            height: 130px;
-        }
-
         #titulo{
             font-size: 40px;
             text-align: center;
@@ -42,11 +24,6 @@
             padding-top: 30px;
         }
 
-        .flexbox {
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-        }
         * {
             padding: 0;
             margin: 0;
@@ -54,6 +31,8 @@
         }
 
         body {
+            margin: 0;
+            padding: 0;
             background: #292929;
             font-family: 'calibri';
         }
@@ -105,9 +84,9 @@
         }
 
         .prefooter{
-            background-color: white;
-            padding: 15px;
-            
+            background-color: #ededed;
+            padding: 35px;
+            margin-top: -26px;
         }
 
         #social{
@@ -115,7 +94,7 @@
         }
 
         #social img:hover{
-            background-color: #f0f2f5;
+            background-color: #bfbfbf;
             border-radius: 5px;
         }
 
@@ -160,58 +139,18 @@
 
 
     </style>
-    <body><!--
-        <div id="titulo">Mesas</div>
-        <section id="mesa">
-            <div class="flexbox">
-                <p>100</p>
-            </div>
-        </section>
-        <section id="mesa">
-            <div class="flexbox">
-                <p>101</p>
-            </div>
-        </section>
-        <section id="mesa">
-            <div class="flexbox">
-                <p>102</p>
-            </div>
-        </section>
-        <section id="mesa">
-            <div class="flexbox">
-                <p>103</p>
-            </div>
-        </section>
-        <section id="mesa">
-            <div class="flexbox">
-                <p>104</p>
-            </div>
-        </section>
-        <section id="mesa">
-            <div class="flexbox">
-                <p>105</p>
-            </div>
-        </section>
-        <section id="mesa">
-            <div class="flexbox">
-                <p>106</p>
-            </div>
-        </section>
-        <section id="mesa">
-            <div class="flexbox">
-                <p>107</p>
-            </div>
-        </section>-->
+    <body>       
         <div class="menu">
             <nav>
-                    <ul>
-                        <li><a th:href="@{/}">Inicio</a></li>
-                        <li><a th:href="@{/mesero/listado}">Meseros</a></li>
-                        <li><a th:href="@{/proveedor/listado}">Proveedores</a></li>
-                        <li><a th:href="@{/platillo/listado}">Platillos</a></li>
-                        <li><a th:href="@{/contacto/contacto}">Contacto</a></li>
+                <ul>
+                    <li><a th:href="@{/}">[[#{nav.inicio}]]</a></li>
+                    <li><a th:href="@{/mesero/listado}">[[#{nav.meseros}]]</a></li>
+                    <li><a th:href="@{/proveedor/listado}">[[#{nav.proveedores}]]</a></li>
+                    <li><a th:href="@{/platillo/listado}">[[#{nav.platillos}]]</a></li>
+                    <li><a th:href="@{/contacto/contacto}">[[#{nav.contacto}]]</a></li>
+                    <li><a th:href="@{/login}">[[#{nav.logout}]]</a></li>
 
-                    </ul>
+                </ul>
             </nav>
         </div>
         <figure>
@@ -220,20 +159,20 @@
         <img src="../static/images/carbonara.png" alt=""/>
         <div class="prefooter">
             <figure id="social">
-                <a href="https://www.google.com/" target="target"><img src="../images/fb.png" alt="facebook" style="width: 46px; padding: 10px;"/></a>
-                <a href="https://www.google.com/" target="target"><img src="../images/ig.png" alt="instagram" style="width: 45px; padding: 10px;"/></a>
+                <a href="https://www.facebook.com/" target="target"><img src="../images/fb.png" alt="facebook" style="width: 46px; padding: 10px;"/></a>
+                <a href="https://www.instagram.com/" target="target"><img src="../images/ig.png" alt="instagram" style="width: 45px; padding: 10px;"/></a>
                 <a href="https://www.google.com/" target="target"><img src="../images/yt.png" alt="youtube" style="width: 50px; padding: 10px; margin-bottom: 4px;"/></a>
             </figure>
         </div>
 
         <div class="footer">
             <div id="info-footer">
-                <span style="margin-bottom: 30px;">El Patio Alajuela</span></br></br>
-                <span>Local 2
-                    Frente al Arab Food, contiguo La Parrilla Argentina
-                    Alajuela, Costa Rica</span>
+                <span style="margin-bottom: 50px;">El Patio Alajuela</span>
+                </br></br></br></br></br></br>
+                <span style="margin-bottom: 50px;">[[#{index.direccion}]]</span> </br></br></br></br></br></br>
                 <span style="margin-left: 2em;">2100-1590</span>
-                <span style="margin-left: 2em;">info@delitzo.com</span></br></br>
+                <span style="margin-left: 2em;">info@delitzo.com</span>
+                </br></br></br></br></br></br>
                 <div class="container">
                     <div class="col">
                         <p class="lead text-center">
@@ -245,20 +184,5 @@
                 </div>
             </div>
         </div>
-        <!-- CONTACTO -->
-        <!-- CONTACTO 
-        <div id="contacto">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1964.5206216242862!2d-84.2104648982949!3d10.013452073775712!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0f9c162edb497%3A0x797dd9c97caaf821!2sEl%20Patio!5e0!3m2!1sen!2scr!4v1650249951264!5m2!1sen!2scr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-
-            <h3>Club Culinario</h3>
-            Plaza Futura, Local 2
-            Frente al Holiday Inn Express, contiguo al Fresh Market de Lindora
-            Santa Ana, Costa Rica
-            <h3>Teléfono</h3>
-            PATiO +(506) 2100-1590</br>
-            TiENDA +(506) 2100-7763
-            <h3>Correo</h3>
-            info@elpatio.com
-        </div>-->
     </body>
 </html>
